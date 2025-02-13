@@ -15,7 +15,7 @@ The average grade for the class is: 85.75
 
 #%%
 
-with open('student_grades.csv','w') as f:
+with open('student_grades.csv','r') as f:
 
     # collect all lines from the file
     lines = f.readlines()
@@ -29,10 +29,10 @@ with open('student_grades.csv','w') as f:
         # skipping the first 'header' line
         for line in lines[1:]:
             # split the line into a list (i.e. columns)
-            row = l.split(',')
+            row = line.split(',')
 
             # convert the grade to a float and add it to the list
-            grades.append(row[3].replace('\n',''))
+            grades.append(float(row[3].replace('\n','')))
 
         avg = sum(grades) / len(grades)
 
